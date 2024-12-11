@@ -1,4 +1,4 @@
-const express = require("express");
+var express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
@@ -7,11 +7,12 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the Company Ranking Backend!");
+const PORT = process.env.PORT || 3500;
+app.listen(PORT, function () {
+  console.log(`Server is listening on port ${PORT}`);
 });
 
-const PORT = process.env.PORT || 6000;
-app.listen(PORT, () =>
-  console.log(`Server running on http://localhost:${PORT}`)
-);
+app.get("/", function (req, res) {
+  res.json({ user: "Srinjoy" });
+});
+module.exports = app;
