@@ -18,3 +18,10 @@ export const findCompaniesBySearch = async (
   });
   return companies;
 };
+
+export const findCompaniesByIndustryName = async (
+  industry: string
+): Promise<ICompany[]> => {
+  const companies = await Company.find({ industry });
+  return companies;
+};

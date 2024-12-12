@@ -1,9 +1,4 @@
 import { Request } from "express";
-import { GetCompanyByNameRequestParams } from "./company.interface";
+import { ICompany } from "../../models/company/company.model";
 
-export type GetCompanyByNameRequest = Request<
-  unknown,
-  unknown,
-  unknown,
-  GetCompanyByNameRequestParams
->;
+export type GetCompanyRequest = Request<unknown, unknown, unknown, ICompany>;
