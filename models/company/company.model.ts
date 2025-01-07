@@ -7,6 +7,7 @@ export interface ICompany extends Document {
   customerSatisfaction: number;
   employeeSatisfaction: number;
   industry: string;
+  description: string;
 }
 
 const CompanySchema: Schema = new Schema({
@@ -16,6 +17,7 @@ const CompanySchema: Schema = new Schema({
   customerSatisfaction: { type: Number, required: true },
   employeeSatisfaction: { type: Number, required: true },
   industry: { type: String, required: true },
+  description: { type: String },
 });
 
 export default model<ICompany>("Company", CompanySchema);

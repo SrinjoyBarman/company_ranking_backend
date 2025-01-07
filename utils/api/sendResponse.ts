@@ -3,6 +3,8 @@ import { Response } from "express";
 export enum ResponseErrorCodes {
   INVALID_REQUEST = "INVALID_REQUEST",
   BAD_REQUEST = "BAD_REQUEST",
+  NOT_FOUND = "NOT_FOUND",
+  SERVER_ERROR = "SERVER_ERROR",
 }
 
 export interface ResponseError {
@@ -25,4 +27,18 @@ export const sendResponse = <T>(
     ...(error && { error }),
   };
   res.status(status).json(response);
+};
+
+export const sendErrorResponse = (
+  res: Response,
+  status: number,
+  message: string,
+  code: ResponseErrorCodes,
+  error?: any
+) => {
+  sendResponse(res, status, message, undefined, {
+    message,
+    code,
+    details: error,
+  });
 };
